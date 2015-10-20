@@ -18,4 +18,6 @@ RUN yum install -y  wget tar bzip2 gzip gcc && \
     ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && \
     echo 'root:$And@ais;' | chpasswd
 
+EXPOSE 22
+
 CMD ["/usr/sbin/sshd","-D"]
