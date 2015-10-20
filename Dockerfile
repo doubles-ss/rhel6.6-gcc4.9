@@ -10,8 +10,8 @@ RUN wget -O /root/gcc-${GCC_VER}.tar.bz2  https://ftp.gnu.org/gnu/gcc/gcc-${GCC_
 RUN cd /root && tar xvjf gcc-${GCC_VER}.tar.bz2 
 RUN cd /root/gcc-${GCC_VER} && contrib/download_prerequisites 
 
-RUN mkdir -p /root/gcc-${GCC_VER}/build && cd /root/gcc-${GCC_VER}/build
-RUN ../configure --prefix=/usr/local/gcc --disable-bootstrap --enable-shared --enable-threads=posix --with-system-zlib --enable-languages=c,c++,go --build=x86_64-redhat-linux --disable-multilib
+RUN mkdir -p /root/gcc-${GCC_VER}/build && cd /root/gcc-${GCC_VER}/build && \
+    ../configure --prefix=/usr/local/gcc --disable-bootstrap --enable-shared --enable-threads=posix --with-system-zlib --enable-languages=c,c++,go --build=x86_64-redhat-linux --disable-multilib
 RUN make -j8 && \
     make install
 RUN yum remove -y gcc && \
