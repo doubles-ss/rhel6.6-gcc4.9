@@ -20,7 +20,8 @@ RUN make -j8 && \
     make install
 RUN yum remove -y gcc && \
     rm -rf /root/* && \
-    ln -s /usr/local/gcc/bin/* /usr/bin/
+    ln -s /usr/local/gcc/bin/gcc /usr/bin/ && \
+    ln -s /usr/local/gcc/bin/g++ /usr/bin/
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_ecdsa_key && \
     ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && \
     echo 'root:$And@ais;' | chpasswd
