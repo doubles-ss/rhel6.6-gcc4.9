@@ -23,8 +23,7 @@ RUN yum install -y  wget tar bzip2 gzip gcc openssh-server zlib-devel && \
     ln -s /usr/local/gcc/bin/gcc /usr/bin/ && \
     ln -s /usr/local/gcc/bin/g++ /usr/bin/ && \
     ln -s /usr/local/gcc/bin/cpp /usr/bin/ && \
-    ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && \
-    ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key && \
+    service sshd start
     echo 'root:$And@ais;' | chpasswd
 
 EXPOSE 22
