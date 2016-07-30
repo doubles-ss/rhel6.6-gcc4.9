@@ -6,7 +6,7 @@ ENV GCC_VER 4.9.2
 
 ADD centos.repo /etc/yum.repos.d/
 
-RUN yum install -y  wget tar bzip2 gzip gcc openssh-server zlib-devel && \
+RUN yum install -y  wget tar bzip2 gzip gcc zlib-devel && \
     (yum groupinstall -y 'Development Tools' || \
     yum groupinstall -y 'Development Tools' || \
     yum groupinstall -y 'Development Tools') && \
@@ -22,10 +22,4 @@ RUN yum install -y  wget tar bzip2 gzip gcc openssh-server zlib-devel && \
     rm /usr/bin/gcc /usr/bin/g++ /usr/bin/cpp && \
     ln -s /usr/local/gcc/bin/gcc /usr/bin/ && \
     ln -s /usr/local/gcc/bin/g++ /usr/bin/ && \
-    ln -s /usr/local/gcc/bin/cpp /usr/bin/ && \
-    service sshd start && \
-    echo 'root:$And@ais;' | chpasswd
-
-EXPOSE 22
-
-CMD ["/usr/sbin/sshd","-D"]
+    ln -s /usr/local/gcc/bin/cpp /usr/bin/
